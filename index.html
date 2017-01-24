@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1 class="page-title">The Typography</h1>
+
+        <div class="card-container">
+            <div class="type-card">
+                <div class="type-card__info">
+                    <span class="font-name">font name</span>
+                    <input type="range" min="15" max="25" defaultValue="15" class="font-size-range">
+                    <input type="range" min="100" max="900" step="100" class="font-weight-range">
+                    <input type="range" min="0" max="1" step="0.1" class="font-spacing-range">
+                </div>
+                <div class="type-card__body">
+                    <input class="font-action font-test-input" type="text" value="font name">
+                    <p class="font-action alphabet__lowercase toto">abcdefghijklmnopqrstuvwxyz</p>
+                    <p class="font-action alphabet__uppercase">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                    <p class="font-action alphabet-sentence">The quick brown fox jumps over the lazy dog</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            "use strict";
+
+            const typeCardFont = document.querySelector('.type-card');
+            const actionFontElems = document.querySelectorAll('.font-action');
+            const fontSizeSlider = document.querySelector('.font-size-range');
+            const fontWeightSlider = document.querySelector('.font-weight-range');
+            const fontSpaceSlider = document.querySelector('.font-spacing-range');
+
+            typeCardFont.style.fontFamily = "calibri";
+            fontSizeSlider.value = 15;
+            fontWeightSlider.value = 100;
+            fontSpaceSlider.value = 0;
+
+            function changeFontSize(eventData) {
+                actionFontElems.forEach((elem) => {
+                    elem.style.fontSize = `${this.value}px`;
+                });
+            }
+            fontSizeSlider.addEventListener('change', changeFontSize);
+            fontSizeSlider.addEventListener('mousemove', changeFontSize);
+
+            function changeFontWeight(eventData) {
+                actionFontElems.forEach(elem => {
+                    elem.style.fontWeight = `${this.value}`;
+                });
+            }
+            fontWeightSlider.addEventListener('change', changeFontWeight);
+            fontWeightSlider.addEventListener('mousemove', changeFontWeight);
+
+            function changeLetterSpace(eventData) {
+                actionFontElems.forEach(elem => {
+                    elem.style.letterSpacing = `${this.value}em`;
+                });
+            }
+            fontSpaceSlider.addEventListener('change', changeLetterSpace);
+            fontSpaceSlider.addEventListener('mousemove', changeLetterSpace);
+        </script>
+    </body>
+</html>
